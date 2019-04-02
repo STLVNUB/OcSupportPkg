@@ -90,6 +90,8 @@
 		3521914B224D4B68002A2CA6 /* OcTemplateLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 352190C9224D4AE2002A2CA6 /* OcTemplateLib.c */; };
 		3521914C224D4B68002A2CA6 /* ocbuild.config in Sources */ = {isa = PBXBuildFile; fileRef = 352190D0224D4AE2002A2CA6 /* ocbuild.config */; };
 		3521914D224D4B68002A2CA6 /* GdbSyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 352190D6224D4AE2002A2CA6 /* GdbSyms.c */; };
+		35219543224E3213002A2CA6 /* InjectKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 3521953E224E3213002A2CA6 /* InjectKext.c */; };
+		3553B4AC224E976800D2D72B /* KextContainer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3553B4AA224E976800D2D72B /* KextContainer.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -282,7 +284,13 @@
 		352190DB224D4AE2002A2CA6 /* gdb_uefi.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = gdb_uefi.py; sourceTree = "<group>"; };
 		3521914E224E0E6F002A2CA6 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		3521951A224E14D8002A2CA6 /* X64 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = X64; path = ../Build/OcSupportPkg/RELEASE_XCODE5/X64; sourceTree = "<group>"; };
-		3521951B224E155D002A2CA6 /* lib__index_OcSupportPkg.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = lib__index_OcSupportPkg.dylib; path = "$(SRCROOT)/build/Debug/lib__index_OcSupportPkg.dylib"; sourceTree = "<absolute>"; };
+		35219536224E3213002A2CA6 /* pack-all.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "pack-all.sh"; sourceTree = "<group>"; };
+		3521953B224E3213002A2CA6 /* InjectKext.inf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InjectKext.inf; sourceTree = "<group>"; };
+		3521953E224E3213002A2CA6 /* InjectKext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = InjectKext.c; sourceTree = "<group>"; };
+		35219541224E3213002A2CA6 /* pack-kext.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "pack-kext.sh"; sourceTree = "<group>"; };
+		35219544224E32AD002A2CA6 /* lib__index_OcSupportPkg.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = lib__index_OcSupportPkg.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3553B4AA224E976800D2D72B /* KextContainer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = KextContainer.c; sourceTree = "<group>"; };
+		3553B4AB224E976800D2D72B /* KextContainer.inf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KextContainer.inf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +309,7 @@
 			children = (
 				35218FA1224D4AE2002A2CA6 /* OcSupportPkg */,
 				3521951A224E14D8002A2CA6 /* X64 */,
+				35219544224E32AD002A2CA6 /* lib__index_OcSupportPkg.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -478,6 +487,8 @@
 		35218FE5224D4AE2002A2CA6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3553B4A9224E976800D2D72B /* KextContainer */,
+				35219530224E3213002A2CA6 /* KextPacker */,
 				35219022224D4AE2002A2CA6 /* BlessTest */,
 				35219026224D4AE2002A2CA6 /* AcpiTest */,
 				3521902D224D4AE2002A2CA6 /* SmbiosTest */,
@@ -939,6 +950,26 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		35219530224E3213002A2CA6 /* KextPacker */ = {
+			isa = PBXGroup;
+			children = (
+				35219536224E3213002A2CA6 /* pack-all.sh */,
+				3521953B224E3213002A2CA6 /* InjectKext.inf */,
+				3521953E224E3213002A2CA6 /* InjectKext.c */,
+				35219541224E3213002A2CA6 /* pack-kext.sh */,
+			);
+			path = KextPacker;
+			sourceTree = "<group>";
+		};
+		3553B4A9224E976800D2D72B /* KextContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3553B4AA224E976800D2D72B /* KextContainer.c */,
+				3553B4AB224E976800D2D72B /* KextContainer.inf */,
+			);
+			path = KextContainer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -983,7 +1014,7 @@
 			);
 			name = __index_OcSupportPkg;
 			productName = __index_OcSupportPkg;
-			productReference = 3521951B224E155D002A2CA6 /* lib__index_OcSupportPkg.dylib */;
+			productReference = 35219544224E32AD002A2CA6 /* lib__index_OcSupportPkg.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -1072,6 +1103,7 @@
 				35219126224D4B67002A2CA6 /* LogHexDump.c in Sources */,
 				35219127224D4B67002A2CA6 /* LogBootOrder.c in Sources */,
 				35219128224D4B67002A2CA6 /* DataPatcher.c in Sources */,
+				35219543224E3213002A2CA6 /* InjectKext.c in Sources */,
 				35219129224D4B67002A2CA6 /* OcTimerLib.c in Sources */,
 				3521912A224D4B67002A2CA6 /* lzss.c in Sources */,
 				3521912B224D4B67002A2CA6 /* lzvn.c in Sources */,
@@ -1100,6 +1132,7 @@
 				35219142224D4B67002A2CA6 /* Vtables.c in Sources */,
 				35219143224D4B67002A2CA6 /* KernelReader.c in Sources */,
 				35219144224D4B67002A2CA6 /* ReadFile.c in Sources */,
+				3553B4AC224E976800D2D72B /* KextContainer.c in Sources */,
 				35219145224D4B67002A2CA6 /* GetVolumeLabel.c in Sources */,
 				35219146224D4B67002A2CA6 /* FileProtocol.c in Sources */,
 				35219147224D4B67002A2CA6 /* GetFileInfo.c in Sources */,

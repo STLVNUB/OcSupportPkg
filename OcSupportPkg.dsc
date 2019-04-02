@@ -116,6 +116,7 @@
   OcSupportPkg/Tests/PropertyTest/PropertyTestApp.inf
   OcSupportPkg/Tests/SmbiosTest/SmbiosTest.inf
   OcSupportPkg/Tests/SmbiosTest/SmbiosTestApp.inf
+  OcSupportPkg/Tests/KextContainer/KextContainer.inf
 
 [PcdsFixedAtBuild]
   gEfiMdePkgTokenSpaceGuid.PcdMaximumAsciiStringLength|0

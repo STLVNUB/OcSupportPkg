@@ -46,6 +46,7 @@
 
 [Protocols]
   gEfiMpServiceProtocolGuid                 ## CONSUMES
+  gOcKextContainerProtocolGuid              ## CONSUMES
 
 [LibraryClasses]
   UefiApplicationEntryPoint

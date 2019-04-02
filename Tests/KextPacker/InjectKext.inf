@@ -14,8 +14,8 @@
 
 [Defines]
   INF_VERSION                         = 0x00010005
-  BASE_NAME                           = KernelTest
-  FILE_GUID                           = 34773042-6AED-4617-BCDB-AD3DF0592EE9
+  BASE_NAME                           = InjectKext
+  FILE_GUID                           = 34773042-6AED-4617-BCDB-AD3DF0592EEA
   MODULE_TYPE                         = UEFI_DRIVER
   VERSION_STRING                      = 1.0
   INF_VERSION                         = 0x00010005
@@ -35,9 +35,8 @@
 #
 
 [Sources]
-  KernelTest.c
-  Lilu.c
-  Vsmc.c
+  InjectKext.c
+  KextData.c
 
 [Packages]
   OcSupportPkg/OcSupportPkg.dec
@@ -69,4 +68,3 @@
   OcSmbiosLib
   OcDataHubLib
   OcVirtualFsLib
-
