@@ -528,7 +528,7 @@ CreateIdentityMappingPageTables (
       PageDirectory1GEntry = (VOID *)PageDirectoryPointerEntry;
 
       for (IndexOfPageDirectoryEntries = 0; IndexOfPageDirectoryEntries < 512; IndexOfPageDirectoryEntries++, PageDirectory1GEntry++, PageAddress += SIZE_1GB) {
-        if (((RoStart >= PageAddress) && (RoStart < PageAddress + SIZE_2MB))
+        if (((RoStart >= PageAddress) && (RoStart < PageAddress + SIZE_1GB))
          || ((RoStart + RoSize) > PageAddress && ((RoStart + RoSize) <= (PageAddress + SIZE_1GB)))) {
           Split1GPageTo2M (RoStart, RoSize, PageAddress, (UINT64 *)PageDirectory1GEntry);
         } else {
@@ -561,7 +561,7 @@ CreateIdentityMappingPageTables (
 
         for (IndexOfPageDirectoryEntries = 0; IndexOfPageDirectoryEntries < 512; IndexOfPageDirectoryEntries++, PageDirectoryEntry++, PageAddress += SIZE_2MB) {
           if (((RoStart >= PageAddress) && (RoStart < PageAddress + SIZE_2MB))
-           || ((RoStart + RoSize) > PageAddress && ((RoStart + RoSize) <= (PageAddress + SIZE_1GB)))) {
+           || ((RoStart + RoSize) > PageAddress && ((RoStart + RoSize) <= (PageAddress + SIZE_2MB)))) {
             //
             // Need to split this 2M page that covers NULL or stack range.
             //

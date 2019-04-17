@@ -219,7 +219,7 @@ OcAppleDiskImageInitializeContext (
   Context->Blocks      = DmgBlocks;
   Context->SectorCount = SectorCount;
 
-  CreateIdentityMappingPageTables ((UINTN)Buffer, EFI_SIZE_TO_PAGES (BufferSize));
+  CreateIdentityMappingPageTables ((UINTN)Buffer, EFI_PAGES_TO_SIZE (EFI_SIZE_TO_PAGES (BufferSize)));
 
   return TRUE;
 }
