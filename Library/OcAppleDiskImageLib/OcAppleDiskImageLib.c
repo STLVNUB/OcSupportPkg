@@ -62,6 +62,19 @@ OcAppleDiskImageFreeBuffer (
          );
 }
 
+/**
+  Allocates and fills in the Page Directory and Page Table Entries to
+  establish a 1:1 Virtual to Physical mapping.
+
+  @return The address of 4 level page map.
+
+**/
+UINTN
+CreateIdentityMappingPageTables (
+  IN UINT64                          RoStart,
+  IN UINT64                          RoSize
+  );
+
 BOOLEAN
 OcAppleDiskImageInitializeContext (
   OUT OC_APPLE_DISK_IMAGE_CONTEXT  *Context,
@@ -205,6 +218,8 @@ OcAppleDiskImageInitializeContext (
   Context->BlockCount  = DmgBlockCount;
   Context->Blocks      = DmgBlocks;
   Context->SectorCount = SectorCount;
+
+  CreateIdentityMappingPageTables ((UINTN)Buffer, EFI_SIZE_TO_PAGES (BufferSize));
 
   return TRUE;
 }

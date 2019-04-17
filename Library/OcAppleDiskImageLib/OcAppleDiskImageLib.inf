@@ -44,3 +44,4 @@
     OcAppleDiskImageBlockIo.c
     OcAppleDiskImageLib.c
     OcAppleDiskImageLibInternal.c
+	VirtualMemory.c
