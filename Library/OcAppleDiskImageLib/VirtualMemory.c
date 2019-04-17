@@ -203,7 +203,7 @@ Split2MPageTo4K (
     PageTableEntry->Uint64 = (UINT64)PhysicalAddress4K;
     PageTableEntry->Bits.UserSupervisor = 1;
     PageTableEntry->Bits.ReadWrite = 1;
-    PageTableEntry->Bits.ReadWrite = 1;
+    PageTableEntry->Bits.Present = 1;
 
     if ((PhysicalAddress4K >= RoStart)
      && ((PhysicalAddress4K + SIZE_4KB) <= (RoStart + RoSize))) {
